@@ -1,22 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+//CSS
+import './index.css';
+
 function BookList () {
-  return <section>
+  return <section className="bookList">
     <Book/>
-    <Title/>
-    <Author/>
+    <Book/>
+    <Book/>
+    <Book/>
   </section>;
 }
 
 const Book = () => {
-  return <article>
-    <Image/>
-  </article>
+  return (
+    <article className="book">
+      <Image/>
+      <Title/>
+      <Author/>
+    </article>
+  ); 
 };
 
-const Image = () => <img src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/mid/9783/9465/9783946571650.jpg" alt=""/>
-const Title = () => <h1>Le petit prince</h1>
+const Image = () => <img src="https://images-na.ssl-images-amazon.com/images/I/71QKDKxL-jL.jpg" alt="" width='30%'/>
+const Title = () => <h1>Le Petit Prince</h1>
 const Author = () => <h4>Antoine de Saint-Exupéry</h4>
 
 ReactDOM.render(<BookList/>, document.getElementById('root'));
