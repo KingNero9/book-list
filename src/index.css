@@ -37,3 +37,6 @@ body {
 img {
     border-radius: 1rem;
 }
+children {
+    margin-top:2rem;
+}

@@ -4,35 +4,41 @@ import ReactDOM from 'react-dom';
 //CSS
 import './index.css';
 
+import {books} from './books.js';
 //Setup variables
-const firstBook = {
-  img: 'https://images-na.ssl-images-amazon.com/images/I/71QKDKxL-jL.jpg',
-  title: 'Le Petit Prince', 
-  author:'Antoine de Saint-Exupéry'
-}
 
-const secondBook = {
-  img: 'https://images-na.ssl-images-amazon.com/images/I/517h-u1AQlL._SX258_BO1,204,203,200_.jpg',
-  title: 'I Love You to the Moon and Back', 
-  author: 'Amelia Hepworth'
-}
+
 
 function BookList () {
   return (
   <section className="bookList">
-    <Book img={firstBook.img} title={firstBook.title} author={firstBook.author}/>
-    <Book img={secondBook.img} title={secondBook.title} author={secondBook.author}/>
+    {books.map((book)=> {
+      return <Book key={book.id} book = {book}></Book>;
+    })}
   </section>
   );
 }
 
 
 const Book = (props) => {
+  const {img, title, author, children} = props.book; //Destructing
+  //attribute, eventHandler
+  //onClick event, onMouseOver event
+  const clickHandler = () => {
+    alert ('Hello World');
+  };
+  const complexExample =(author) => {
+    console.log(author);
+  };
   return (
-    <article className="book">
-      <img src={props.img} width='80%'/>
-      <h1>{props.title}</h1>
-      <h4>{props.author}</h4>
+    <article className="book" onMouseOver={()=>{
+      console.log(title);
+    }}>
+      <img src={img} width='80%'/>
+      <h1 onClick={()=>console.log('title')}>{title}</h1>
+      <h4>{author}</h4>
+      <button type="button" onClick={clickHandler}>Reference example</button>
+      <button type="button" onClick ={() =>complexExample(author)}>More complex example</button>
     </article>
   ); 
 };
